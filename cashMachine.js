@@ -43,7 +43,7 @@ class CashMachine {
           quantity: this.getMaximimPossibleQuantityForBanknote(amountRemain, banknote)
         }
         return [
-          amount - this.getBanknoteAmount(banknoteToSend),
+          amountRemain - this.getBanknoteAmount(banknoteToSend),
           banknoteToSend
         ];
       },
