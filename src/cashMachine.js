@@ -7,7 +7,11 @@ const InvalidArgumentException = require('./exceptions/InvalidArgumentException'
  * Class for CashMachine
  * Includes inner property of banknotesList and methods to manipulate it
  * Should be initialized with starting banknotesList with the following format:
- * [ { value: 100, quantity: 15 }, { value: 50, quantity: 32 }, ... ]
+ * [
+ *   { value: 100, quantity: 15 },
+ *   { value: 50, quantity: 32 },
+ *   ...
+ *  ]
  */
 
 const initialBanknotesList = [
@@ -80,7 +84,7 @@ class CashMachine {
     if (amountRemain > 0) {
       throw new NoteUnavailableException();
     }
-    this.reduceBanknotesList(banknotesToSend);
+    // this.reduceBanknotesList(banknotesToSend);
     return banknotesToSend;
   }
 }
