@@ -1,6 +1,6 @@
 const CashMachine = require('../cashMachine');
 const NoteUnavailableException = require('../exceptions/NoteUnavailableException');
-const NotEnougnCashException = require('../exceptions/NotEnougnCashException');
+const NotEnoughCashException = require('../exceptions/NotEnoughCashException');
 const InvalidArgumentException = require('../exceptions/InvalidArgumentException');
 
 describe('Test the cashMachine', () => {
@@ -92,7 +92,7 @@ describe('Test the cashMachine', () => {
   //     { value: 20, quantity: 1 },
   //     { value: 10, quantity: 1 },
   //   ];
-  //   const expectedException = NotEnougnCashException;
+  //   const expectedException = NotEnoughCashException;
   //   const cashMachine = new CashMachine(initialBanknotesList);
   //   expect(() => cashMachine.withdrawCash(withdrawAmount)).toThrow(expectedException);
   // });

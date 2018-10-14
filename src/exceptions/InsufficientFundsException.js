@@ -1,4 +1,4 @@
-module.exports = function NotEnougnCashException(message = 'Not enough cash', meta) {
+module.exports = function InsufficientFundsException(message = 'Insufficient funds', meta) {
   Error.captureStackTrace(this, this.constructor);
   this.name = this.constructor.name;
   this.message = message;

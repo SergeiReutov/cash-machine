@@ -1,7 +1,8 @@
 const R = require('ramda');
 const NoteUnavailableException = require('./exceptions/NoteUnavailableException');
-const NotEnougnCashException = require('./exceptions/NotEnougnCashException');
+const NotEnoughCashException = require('./exceptions/NotEnoughCashException');
 const InvalidArgumentException = require('./exceptions/InvalidArgumentException');
+const InsufficientFundsException = require('./exceptions/InsufficientFundsException');
 
 /**
  * Class for CashMachine
@@ -66,6 +67,10 @@ class CashMachine {
     return true;
   }
 
+  isEnoughUserBalance() {
+    return true;
+  }
+
   reduceBanknotesList(banknotesToSend) {
     this._banknotesList = this._banknotesList.map(banknote => ({
       value: banknote.value,
@@ -77,8 +82,11 @@ class CashMachine {
     if (Number.isNaN(amount) || amount < 0) {
       throw new InvalidArgumentException();
     }
+    if (!this.isEnoughUserBalance()) {
+      throw new InsufficientFundsException();
+    }
     if (!this.isEnoughCash(amount)) {
-      throw new NotEnougnCashException();
+      throw new NotEnoughCashException();
     }
     const [amountRemain, banknotesToSend] = this.getRequiredBanknotes(amount);
     if (amountRemain > 0) {
