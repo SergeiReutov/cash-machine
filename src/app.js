@@ -6,7 +6,6 @@ const multer = require('multer');
 const CashMachine = require('./cashMachine');
 const InvalidArgumentException = require('./exceptions/InvalidArgumentException');
 
-const port = process.env.PORT || 3001;
 const path = __dirname + '/';
 const cashMachine = new CashMachine();
 
@@ -30,9 +29,8 @@ app.put('/api/withdraw', upload.array(),
     }
   },
   (error, req, res, next) => {
-    console.log(error);
     res.status(500).send({ error });
   }
 );
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+module.exports = app;
